@@ -23,11 +23,11 @@
 			<hr>
 		</div>
 		<div class="table-responsive">
-			@include('includes.user.table.table-accounts', $data)
+			@include('includes.employee.table.table-employees', $data)
 		</div>
 	</div>
 </article>
-@include('includes.user.modal.modal-employee-details')
+@include('includes.employee.modal.modal-employee-details')
 @push('scripts')
-	@include('includes.user.scripts.employee-scripts')
+	@include('includes.employee.scripts.employee-scripts')
 @endpush
