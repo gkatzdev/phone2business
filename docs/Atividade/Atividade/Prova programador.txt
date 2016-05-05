@@ -1,0 +1,10 @@
+Conforme informado, segue atividade para complementação do processo seletivo em referência 
+
+	• Construa um projeto usando PHP para realizar a atividade proposta (se souber, usar o  framework Symfony)
+	• Crie as classes baseado no diagrama de classe enviado;
+	• Crie CRUD para as duas classes disponibilizadas no diagrama, salvando os dados em um arquivo XML ou JSON;
+	• O sistema deve ter um menu para acessar cada uma das entidades do diagrama (Colaborador e Empresa);
+	• Os itens cadastrados devem ser exibidos em uma grid que contenha paginação e pesquisa (pode ser usado datatable ou outros plugins);
+	• A grid deve ser populada através de controller e uso de diretiva (Angular)
+	• Ao clicar no botão (+), deve-se abrir um modal conforme a pasta (Formulario Modal) que está oculta no PSD.
+	• O CSS deve ser construído em um arquivo separado e a aparência deve estar conforme o exemplo enviado (arquivos de imagem estão sendo enviadas junto com o PSD do layout).
