@@ -1,9 +1,11 @@
 <?php
-
+/**
+ * Created by Gabriela Katz
+ * Date: 05/05/2016
+ */
 namespace App\Http\Controllers;
 
 use App\Company;
-use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -26,7 +28,7 @@ class CompanyController extends Controller
        $companies = new Company();
 
        $data = $companies->listCompanies();
-       return view('employees')->with($data);
+       return view('compnies')->with($data);
    }
 
     public function insertCompany(Request $request){
@@ -43,7 +45,7 @@ class CompanyController extends Controller
     }
 
     public function updateCompany(Request $request){
-        $companyId = Input::get('companyId');
+        $companyId = Input::get('company_id');
         $data = [
             'name' => Input::get('name')
         ];
@@ -56,7 +58,7 @@ class CompanyController extends Controller
     }
 
     public function deleteCompany(Request $request){
-        $companyId = Input::get('employeeId');
+        $companyId = Input::get('company_id');
         $company = new Company();
         $company = $company->deleteCompany($companyId);
 

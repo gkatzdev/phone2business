@@ -1,4 +1,8 @@
 <?php
+/**
+ * Created by Gabriela Katz
+ * Date: 05/05/2016
+ */
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('', array('as' => 'login', 'uses' => 'EmployeeController@index'));
@@ -10,6 +14,7 @@ Route::group(['middleware' => ['web']], function () {
         //Employees
         Route::group(['prefix' => 'employee'], function() {
             Route::get('', ['as' => 'employee', 'uses' => 'EmployeeController@index']);
+            Route::get('{employee_id}', ['as' => 'get.employee', 'uses' => 'EmployeeController@getEmployee']);
             Route::post('', ['as' => 'post.employee', 'uses' => 'EmployeeController@insertEmployee']);
             Route::put('', ['as' => 'update.employee', 'uses' => 'EmployeeController@updateEmployee']);
             Route::delete('', ['as' => 'delete.employee', 'uses' => 'EmployeeController@deleteEmployee']);

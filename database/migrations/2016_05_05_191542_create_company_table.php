@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * Created by Gabriela Katz
+ * Date: 05/05/2016
+ */
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 

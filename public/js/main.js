@@ -1,431 +1,608 @@
-/*
- *
- *   INSPINIA - Responsive Admin Theme
- *   version 2.4
- *
+/**
+ * Created by Gabriela Katz
+ * Date: 05/05/2016
  */
-
-
-$(document).ready(function () {
-
-    function checkCpf(docNumber){
-        var isValid = false;
-        docNumber = docNumber.replace('-', '');
-        docNumber = docNumber.replace('.', '');
-        docNumber = docNumber.replace('.', '');
-
-        $.ajax({
-            method: 'get',
-            url: 'user/checkcpf/'+docNumber,
-            dataType: "json",
-            async: false,
-            success: function(data){
-                isValid = data;
-            },
-            error: function(){
-                //window.location.href = '{!! route('500') !!}';
-            },
-            fail: function(data){
-                isValid = data;
-            }
+jQuery(document).ready(function ($) {
+    "use strict";
+    $(function () {
+        //Touch login image background responsive
+        $(window).resize(function(){
+            $('.img-backgroud').animate(function () {
+                $(this).css('margin-top', $(window).width()/100+"% !important");
+            });
         });
-        if(isValid){
-            isValid = false;
-        } else {
-            isValid = true;
-        }
-        return isValid;
-    }
 
-    function checkCard(cardNumber){
-        var isValid = false;
+        //Keep track of last scroll
+        var lastScroll = 0;
+        var header = $("#header");
+        var headerfixed = $("#header-main-fixed");
+        var headerfixedbg = $(".header-bg");
+        var headerfixedtopbg = $(".top-header-bg");
+        $(window).scroll(function () {
+            //Sets the current scroll position
+            var st = $(this).scrollTop();
+            //Determines up-or-down scrolling
+            if (st > lastScroll) {
 
-        $.ajax({
-            method: 'get',
-            url: 'user/checkcard/'+cardNumber,
-            dataType: "json",
-            async: false,
-            success: function(data){
-                isValid = data;
-            },
-            error: function(){
-                //window.location.href = '{!! route('500') !!}';
-            },
-            fail: function(data){
-                isValid = data;
+                //Replace this with your function call for downward-scrolling
+                if (st > 50) {
+                    header.addClass("header-top-fixed");
+                    header.find(".header-top-row").addClass("dis-n");
+                    headerfixedbg.addClass("header-bg-fixed");
+                    headerfixed.addClass("header-main-fixed");
+                    headerfixedtopbg.addClass("top-header-bg-fix");
+                    $(".nav-bar-img-logo").removeClass('normal-scroll-logo');
+                    $(".nav-bar-img-logo").addClass('small-scroll-logo');
+                }
             }
+            else {
+                //Replace this with your function call for upward-scrolling
+                if (st < 50) {
+                    $(".nav-bar-img-logo").removeClass('small-scroll-logo');
+                    $(".nav-bar-img-logo").addClass('normal-scroll-logo');
+                    header.removeClass("header-top-fixed");
+                    header.find(".header-top-row").removeClass("dis-n");
+                    headerfixed.removeClass("header-main-fixed");
+                    headerfixedbg.removeClass("header-bg-fixed");
+                    headerfixedtopbg.removeClass("top-header-bg-fix");
+                    //headerfixed.addClass("header-main-fixed")
+                }
+            }
+            //Updates scroll position
+            lastScroll = st;
         });
-        if(isValid){
-            isValid = false;
-        } else {
-            isValid = true;
-        }
-        return isValid;
-    }
-
-    // Full height of sidebar
-    function fix_height() {
-        var heightWithoutNavbar = $("body > #wrapper").height() - 61;
-        $(".sidebard-panel").css("min-height", heightWithoutNavbar + "px");
-
-        var navbarHeigh = $('nav.navbar-default').height();
-        var wrapperHeigh = $('#page-wrapper').height();
-
-        if(navbarHeigh > wrapperHeigh){
-            $('#page-wrapper').css("min-height", navbarHeigh + "px");
-        }
-
-        if(navbarHeigh < wrapperHeigh){
-            $('#page-wrapper').css("min-height", $(window).height()  + "px");
-        }
-
-        if ($('body').hasClass('fixed-nav')) {
-            if (navbarHeigh > wrapperHeigh) {
-                $('#page-wrapper').css("min-height", navbarHeigh - 60 + "px");
-            } else {
-                $('#page-wrapper').css("min-height", $(window).height() - 60 + "px");
-            }
-        }
-
-    }
-
-
-    $(window).bind("load resize scroll", function() {
-        if(!$("body").hasClass('body-small')) {
-            fix_height();
-        }
     });
 
-    // Move right sidebar top after scroll
-    $(window).scroll(function(){
-        if ($(window).scrollTop() > 0 && !$('body').hasClass('fixed-nav') ) {
-            $('#right-sidebar').addClass('sidebar-top');
-        } else {
-            $('#right-sidebar').removeClass('sidebar-top');
-        }
-    });
-
-    setTimeout(function(){
-        fix_height();
-    })
-
-    // MetsiMenu
-    $('#side-menu').metisMenu();
-
-    // Collapse ibox function
-    $('.collapse-link').click(function () {
-        var ibox = $(this).closest('div.ibox');
-        var button = $(this).find('i');
-        var content = ibox.find('div.ibox-content');
-        content.slideToggle(200);
-        button.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-        ibox.toggleClass('').toggleClass('border-bottom');
-        setTimeout(function () {
-            ibox.resize();
-            ibox.find('[id^=map-]').resize();
-        }, 50);
-    });
-
-    // Close ibox function
-    $('.close-link').click(function () {
-        var content = $(this).closest('div.ibox');
-        content.remove();
-    });
-
-    // Fullscreen ibox function
-    $('.fullscreen-link').click(function () {
-        var ibox = $(this).closest('div.ibox');
-        var button = $(this).find('i');
-        $('body').toggleClass('fullscreen-ibox-mode');
-        button.toggleClass('fa-expand').toggleClass('fa-compress');
-        ibox.toggleClass('fullscreen');
-        setTimeout(function () {
-            $(window).trigger('resize');
-        }, 100);
-    });
-
-    // Close menu in canvas mode
-    $('.close-canvas-menu').click(function () {
-        $("body").toggleClass("mini-navbar");
-        SmoothlyMenu();
-    });
-
-    // Run menu of canvas
-    $('body.canvas-menu .sidebar-collapse').slimScroll({
-        height: '100%',
-        railOpacity: 0.9
-    });
-
-    // Open close right sidebar
-    $('.right-sidebar-toggle').click(function () {
-        $('#right-sidebar').toggleClass('sidebar-open');
-    });
-
-    // Initialize slimscroll for right sidebar
-    $('.sidebar-container').slimScroll({
-        height: '100%',
-        railOpacity: 0.4,
-        wheelStep: 10
-    });
-
-    // Small todo handler
-    $('.check-link').click(function () {
-        var button = $(this).find('i');
-        var label = $(this).next('span');
-        button.toggleClass('fa-check-square').toggleClass('fa-square-o');
-        label.toggleClass('todo-completed');
-        return false;
-    });
-
-
-    // Minimalize menu
-    $('.navbar-minimalize').click(function () {
-        $("body").toggleClass("mini-navbar");
-        SmoothlyMenu();
-    });
-
-    // Move modal to body
-    // Fix Bootstrap backdrop issu with animation.css
-    $('.modal').appendTo("body");
-
-    if ($.support.pjax) {
-        $.pjax.defaults.timeout = 10; // time in milliseconds
-    }
-
-    $("[data-toggle=popover]")
-        .popover();
-
-    // Add slimscroll to element
-    $('.full-height-scroll').slimscroll({
-        height: '100%'
-    })
-
-    if (localStorageSupport) {
-
-        var collapse = localStorage.getItem("collapse_menu");
-        var fixedsidebar = localStorage.getItem("fixedsidebar");
-        var fixednavbar = localStorage.getItem("fixednavbar");
-        var boxedlayout = localStorage.getItem("boxedlayout");
-        var fixedfooter = localStorage.getItem("fixedfooter");
-
-        var body = $('body');
-
-        if (fixedsidebar == 'on') {
-            body.addClass('fixed-sidebar');
-            $('.sidebar-collapse').slimScroll({
-                height: '100%',
-                railOpacity: 0.9
+    // Header search open functions
+    $("#header-search").click(function () {
+        var $obj = $("#header-top-search");
+        if ($obj.hasClass("expanded")) {
+            $obj.removeClass("expanded");
+            $obj.slideUp({
+                duration: 300,
+                easing: "easeInQuad"
             });
         }
-
-        if (collapse == 'on') {
-            if (body.hasClass('fixed-sidebar')) {
-                if (!body.hasClass('body-small')) {
-                    body.addClass('mini-navbar');
-                }
-            } else {
-                if (!body.hasClass('body-small')) {
-                    body.addClass('mini-navbar');
-                }
-
-            }
+        else {
+            $obj.addClass("expanded");
+            $obj.slideDown({
+                duration: 300,
+                easing: "easeInQuad"
+            });
         }
-
-        if (fixednavbar == 'on') {
-            $(".navbar-static-top").removeClass('navbar-static-top').addClass('navbar-fixed-top');
-            body.addClass('fixed-nav');
+    });
+    $("#header-search-close").click(function () {
+        var $obj = $("#header-top-search");
+        if ($obj.hasClass("expanded")) {
+            $obj.removeClass("expanded");
+            $obj.slideUp({
+                duration: 300,
+                easing: "easeInQuad"
+            });
         }
-
-        if (boxedlayout == 'on') {
-            body.addClass('boxed-layout');
+        else {
+            $obj.addClass("expanded");
+            $obj.slideDown({
+                duration: 300,
+                easing: "easeInQuad"
+            });
         }
+    });
+    // Facts show functions
+    $(function () {
+        var dataperc;
+        $(".fact").appear(function () {
+            $('.fact').each(function () {
+                dataperc = $(this).attr('data-perc');
+                $(this).find('.factor').delay(6000).countTo({
+                    from: 0,
+                    to: dataperc,
+                    speed: 3000,
+                    refreshInterval: 50
+                });
+            });
+        });
+    });
+    // Bestseller owl slider script
+    $("#nav-bestseller .next").click(function () {
+        $("#owl-bestseller").trigger('owl.next');
+    });
+    $("#nav-bestseller .prev").click(function () {
+        $("#owl-bestseller").trigger('owl.prev');
+    });
+    $("#owl-bestseller").owlCarousel({
+// Most important owl features
+        items: 4,
+        itemsCustom: [[0, 1], [320, 1], [580, 2], [768, 2], [992, 3], [1200, 4]],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
 
-        if (fixedfooter == 'on') {
-            $(".footer").addClass('fixed');
-        }
-    }
+    // Column 2 owl slider script
+    $("#nav-col-2 .next").click(function () {
+        $("#owl-col-2").trigger('owl.next');
+    });
+    $("#nav-col-2 .prev").click(function () {
+        $("#owl-col-2").trigger('owl.prev');
+    });
+    $("#owl-col-2").owlCarousel({
+// Most important owl features
+        items: 1,
+        itemsCustom: [[0, 1], [320, 1], [580, 2], [768, 2], [972, 1], [1200, 2]],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    // Column 2 owl slider script
+    $("#nav-col-22 .next").click(function () {
+        $("#owl-col-22").trigger('owl.next');
+    });
+    $("#nav-col-22 .prev").click(function () {
+        $("#owl-col-22").trigger('owl.prev');
+    });
+    $("#owl-col-22").owlCarousel({
+// Most important owl features
+        items: 1,
+        itemsCustom: [[0, 1], [320, 1], [580, 2], [768, 2], [972, 1], [1200, 2]],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    // Hot products owl slider script
+    $("#nav-hot .next").click(function () {
+        $("#owl-hot").trigger('owl.next');
+    });
+    $("#nav-hot .prev").click(function () {
+        $("#owl-hot").trigger('owl.prev');
+    });
+    $("#owl-hot").owlCarousel({
+// Most important owl features
+        items: 5,
+        lazyLoad: true,
+        itemsCustom: [[0, 1], [320, 1], [480, 2], [768, 3], [992, 4], [1200, 5]],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
 
-    $.validator.addMethod("cpf", function(value) {
-        // Removing special characters from value
-        value = value.replace(/([~!@#$%^&*()_+=`{}\[\]\-|\\:;'<>,.\/? ])+/g, "");
-
-        // Checking value to have 11 digits only
-        if (value.length !== 11) {
-            return false;
-        }
-
-        var sum = 0,
-            firstCN, secondCN, checkResult, i;
-
-        firstCN = parseInt(value.substring(9, 10), 10);
-        secondCN = parseInt(value.substring(10, 11), 10);
-
-        checkResult = function(sum, cn) {
-            var result = (sum * 10) % 11;
-            if ((result === 10) || (result === 11)) {result = 0;}
-            return (result === cn);
-        };
-
-        // Checking for dump data
-        if (value === "" ||
-            value === "00000000000" ||
-            value === "11111111111" ||
-            value === "22222222222" ||
-            value === "33333333333" ||
-            value === "44444444444" ||
-            value === "55555555555" ||
-            value === "66666666666" ||
-            value === "77777777777" ||
-            value === "88888888888" ||
-            value === "99999999999"
-        ) {
-            return false;
-        }
-
-        // Step 1 - using first Check Number:
-        for ( i = 1; i <= 9; i++ ) {
-            sum = sum + parseInt(value.substring(i - 1, i), 10) * (11 - i);
-        }
-
-        // If first Check Number (CN) is valid, move to Step 2 - using second Check Number:
-        if ( checkResult(sum, firstCN) ) {
-            sum = 0;
-            for ( i = 1; i <= 10; i++ ) {
-                sum = sum + parseInt(value.substring(i - 1, i), 10) * (12 - i);
-            }
-            return checkResult(sum, secondCN);
-        }
-        return false;
-
-    }, "Informe um CPF válido");
-
-    $.validator.addMethod("extension", function(value, element, param) {
-        return param = "string" == typeof param ? param.replace(/,/g,"|") : "png|jpe?g|gif",
-        this.optional(element) || value.match(new RegExp("\\.("+param+")$","i"))
-    }, "Extensão inválida.");
-
-    $.validator.addMethod("checkCpf", function(value) {
-        if(value == ''){
-            return true;
-        } else {
-            return checkCpf(value);
-        }
-
-    }, "CPF já cadastrado");
-
-    $.validator.addMethod("checkCard", function(value) {
-        if(value == ''){
-            return true;
-        } else {
-            return checkCard(value);
-        }
-    }, "Cartão já cadastrado");
-
-    $.validator.addMethod("checkSequencePass", function(value) {
-        var len = value.length;
-        var isValid = false;
-
-        if(!len || isNaN(value) || value == 0){
-            return false;
-        }
-
-        for(var i = 1; i < len; i++ )
-        {
-            if(parseInt(value[0])+i != parseInt(value[i]) && (parseInt(value[0]) != parseInt(value[i]))){
-                isValid = true;
-            }
-        }
-        return isValid;
-    }, "Para sua segurança, a senha não deve ser sequencial");
-
-    $.validator.addMethod("cnpj", function(value) {
-        var str = value.replace('.','');
-        str = str.replace('.','');
-        str = str.replace('.','');
-        str = str.replace('-','');
-        str = str.replace('/','');
-        var cnpj = str;
-        var numeros, digitos, soma, i, resultado, pos, tamanho, digitos_iguais;
-        digitos_iguais = 1;
-        if (cnpj.length < 14 && cnpj.length < 15)
-            return false;
-        for (i = 0; i < cnpj.length - 1; i++)
-            if (cnpj.charAt(i) != cnpj.charAt(i + 1))
+    // jewellery owl slider script
+    $("#nav-jew .next").click(function () {
+        $("#owl-jew").trigger('owl.next');
+    });
+    $("#nav-jew .prev").click(function () {
+        $("#owl-jew").trigger('owl.prev');
+    });
+    $("#owl-jew").owlCarousel({
+// Most important owl features
+        items: 4,
+        lazyLoad: true,
+        itemsCustom: [[0, 1], [320, 1], [480, 2], [768, 2], [992, 3], [1200, 3]],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    $("#owl-client-say").owlCarousel({
+// Most important owl features
+        items: 1,
+        itemsCustom: false,
+        itemsDesktop: [1199, 1],
+        itemsDesktopSmall: [980, 1],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: true,
+        pagination: true,
+        paginationSpeed: 300,
+        stopOnHover: false,
+        transitionStyle: "fade",
+        navigation: false
+    });
+    // Summer sale owl slider script
+    $("#nav-summer-sale .next").click(function () {
+        $("#owl-summer-sale").trigger('owl.next');
+    });
+    $("#nav-summer-sale .prev").click(function () {
+        $("#owl-summer-sale").trigger('owl.prev');
+    });
+    $("#owl-summer-sale").owlCarousel({
+// Most important owl features
+        items: 3,
+        itemsCustom: false,
+        itemsDesktop: [1199, 2],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    // iphone(ios) owl slider script
+    $("#nav-child .next").click(function () {
+        $("#owl-child").trigger('owl.next');
+    });
+    $("#nav-child .prev").click(function () {
+        $("#owl-child").trigger('owl.prev');
+    });
+    $("#owl-child").owlCarousel({
+// Most important owl features
+        items: 3,
+        itemsCustom: false,
+        itemsDesktop: [1199, 2],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    // owl slider script
+    $("#nav-tabs .next").click(function () {
+        $("#owl-new").trigger('owl.next');
+        $("#owl-featured").trigger('owl.next');
+    });
+    $("#nav-tabs .prev").click(function () {
+        $("#owl-new").trigger('owl.prev');
+        $("#owl-featured").trigger('owl.prev');
+    });
+    $("#owl-new").owlCarousel({
+// Most important owl features
+        items: 4,
+        itemsCustom: false,
+        itemsDesktop: [1199, 3],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    $("#owl-featured").owlCarousel({
+// Most important owl features
+        items: 4,
+        itemsCustom: false,
+        itemsDesktop: [1199, 3],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    // owl slider script
+    $("#nav-tabs2 .next").click(function () {
+        $("#owl-new2").trigger('owl.next');
+        $("#owl-featured2").trigger('owl.next');
+    });
+    $("#nav-tabs2 .prev").click(function () {
+        $("#owl-new2").trigger('owl.prev');
+        $("#owl-featured2").trigger('owl.prev');
+    });
+    $("#owl-new2").owlCarousel({
+// Most important owl features
+        items: 3,
+        itemsCustom: false,
+        itemsDesktop: [1199, 2],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    $("#owl-featured2").owlCarousel({
+// Most important owl features
+        items: 3,
+        itemsCustom: false,
+        itemsDesktop: [1199, 2],
+        itemsDesktopSmall: [980, 2],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: false,
+        stopOnHover: false,
+        navigation: false
+    });
+    $("#owl-partners").owlCarousel({
+// Most important owl features
+        items: 5,
+        itemsCustom: false,
+        itemsDesktop: [1199, 4],
+        itemsDesktopSmall: [980, 3],
+        itemsTablet: [630, 1],
+        itemsTabletSmall: false,
+        itemsMobile: [479, 1],
+        singleItem: false,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: true,
+        stopOnHover: false,
+        navigation: false
+    });
+    $("#owl-home-slider").owlCarousel({
+// Most important owl features
+        lazyLoad: true,
+        singleItem: true,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 200,
+        responsiveBaseWidth: window,
+        autoPlay: true,
+        stopOnHover: false,
+        transitionStyle: "fade"
+    });
+    $("#owl-block-slider").owlCarousel({
+// Most important owl features
+        lazyLoad: true,
+        singleItem: true,
+        itemsScaleUp: false,
+        responsive: true,
+        responsiveRefreshRate: 100,
+        responsiveBaseWidth: window,
+        autoPlay: true,
+        stopOnHover: false
+    });
+    $(function () {
+        $('.dropdown').hover(function () {
+            $(this).addClass('open');
+        }, function () {
+            $(this).removeClass('open');
+        });
+    });
+    jQuery('.tp-banner').show().revolution(
             {
-                digitos_iguais = 0;
-                break;
+                dottedOverlay: "none",
+                delay: 16000,
+                startwidth: 1300,
+                startheight: 750,
+                hideThumbs: 200,
+                thumbWidth: 100,
+                thumbHeight: 50,
+                thumbAmount: 5,
+                navigationType: "none",
+                navigationArrows: "solo",
+                navigationStyle: "preview1",
+                touchenabled: "on",
+                onHoverStop: "off",
+                swipe_velocity: 0.7,
+                swipe_min_touches: 1,
+                swipe_max_touches: 1,
+                drag_block_vertical: false,
+                parallax: "mouse",
+                parallaxBgFreeze: "on",
+                parallaxLevels: [7, 4, 3, 2, 5, 4, 3, 2, 1, 0],
+                keyboardNavigation: "off",
+                navigationHAlign: "center",
+                navigationVAlign: "bottom",
+                navigationHOffset: 0,
+                navigationVOffset: 20,
+                soloArrowLeftHalign: "left",
+                soloArrowLeftValign: "center",
+                soloArrowLeftHOffset: 20,
+                soloArrowLeftVOffset: 0,
+                soloArrowRightHalign: "right",
+                soloArrowRightValign: "center",
+                soloArrowRightHOffset: 20,
+                soloArrowRightVOffset: 0,
+                shadow: 0,
+                fullWidth: "off",
+                fullScreen: "on",
+                spinner: "spinner1",
+                stopLoop: "off",
+                stopAfterLoops: -1,
+                stopAtSlide: -1,
+                shuffle: "off",
+                autoHeight: "off",
+                forceFullWidth: "on",
+                hideThumbsOnMobile: "off",
+                hideNavDelayOnMobile: 1500,
+                hideBulletsOnMobile: "off",
+                hideArrowsOnMobile: "off",
+                hideTimerBar: "on",
+                hideThumbsUnderResolution: 0,
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                startWithSlide: 0,
+                fullScreenOffsetContainer: ""
+            });
+
+    $('.revolution').revolution({
+        delay: 9000,
+        startwidth: 1170,
+        startheight: 500,
+        hideThumbs: 10,
+        fullWidth: "on",
+        fullScreen: "on",
+        navigationType: "none",
+        navigationArrows: "solo",
+        navigationStyle: "round",
+        navigationHAlign: "center",
+        navigationVAlign: "bottom",
+        navigationHOffset: 30,
+        navigationVOffset: 30,
+        soloArrowLeftHalign: "left",
+        soloArrowLeftValign: "center",
+        soloArrowLeftHOffset: 20,
+        soloArrowLeftVOffset: 0,
+        soloArrowRightHalign: "right",
+        soloArrowRightValign: "center",
+        soloArrowRightHOffset: 20,
+        soloArrowRightVOffset: 0,
+        touchenabled: "on"
+
+    });
+    $('.tool_tip').tooltip();
+    // Color Filter
+    $(".colors li a").each(function () {
+        $(this).css("background-color", "#" + $(this).attr("data-rel")).attr("href", "#" + $(this).attr("data-rel"));
+    });
+    // Product zoom
+    $('#product-zoom').elevateZoom({
+        zoomType: "inner",
+        cursor: "crosshair",
+        zoomWindowFadeIn: 500,
+        zoomWindowFadeOut: 750
+    });
+    var gallery = $('#gal1');
+    gallery.find('a').hover(function () {
+
+        var smallImage = $(this).attr("data-image");
+        var largeImage = $(this).attr("data-zoom-image");
+        var ez = $('#product-zoom').data('elevateZoom');
+        ez.swaptheimage(smallImage, largeImage);
+    });
+    // Daily Deal CountDown Clock Settings
+    var date = new Date().getTime(); // This example is just to show how this function works.
+    var new_date = new Date(date + 86400000); // You can set your own time whenever you want.
+//    var n = new_date.toUTCString();				// 'date' value is given in milliseconds.
+    //alert(new_date)
+    $(".time").countdown({
+        date: new_date,
+        yearsAndMonths: true,
+        leadingZero: true
+    });
+    // Categories Menu Manipulations
+    $(".ul-side-category li a").click(function () {
+
+        var sm = $(this).next();
+        if (sm.hasClass("sub-category")) {
+            if (sm.css("display") === "none") {
+                $(this).next().slideDown();
             }
-        if (!digitos_iguais)
-        {
-            tamanho = cnpj.length - 2
-            numeros = cnpj.substring(0,tamanho);
-            digitos = cnpj.substring(tamanho);
-            soma = 0;
-            pos = tamanho - 7;
-            for (i = tamanho; i >= 1; i--)
-            {
-                soma += numeros.charAt(tamanho - i) * pos--;
-                if (pos < 2)
-                    pos = 9;
+            else {
+
+                $(this).next().slideUp();
+                $(this).next().find(".sub-category").slideUp();
+                /*$(this).next().find(".categories-submenu").slideUp("normal", function() {
+                 $(this).parent().find(".icon-angle-down").removeClass("icon-angle-down").addClass("icon-angle-right");
+                 });*/
             }
-            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-            if (resultado != digitos.charAt(0))
-                return false;
-            tamanho = tamanho + 1;
-            numeros = cnpj.substring(0,tamanho);
-            soma = 0;
-            pos = tamanho - 7;
-            for (i = tamanho; i >= 1; i--)
-            {
-                soma += numeros.charAt(tamanho - i) * pos--;
-                if (pos < 2)
-                    pos = 9;
-            }
-            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-            if (resultado != digitos.charAt(1))
-                return false;
+
+            return false;
+        }
+        else {
             return true;
         }
-        else
-            return false;
+    });
 
-    }, "Informe um CNPJ válido");
-
+    // DataTable
+    $(".dataTable").DataTable({
+        searching: true,
+        dom: 'lftipr',
+        language:{
+            "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
+        },
+        pageLength: 10
+    });
 });
 
-// Minimalize menu when screen is less than 768px
-$(function() {
-    $(window).bind("load resize", function() {
-        if ($(this).width() < 769) {
-            $('body').addClass('body-small')
-        } else {
-            $('body').removeClass('body-small')
-        }
-    })
-})
+(function ($) {
+    $.fn.countTo = function (options) {
+        // merge the default plugin settings with the custom options
+        options = $.extend({}, $.fn.countTo.defaults, options || {});
+        // how many times to update the value, and how much to increment the value on each update
+        var loops = Math.ceil(options.speed / options.refreshInterval),
+                increment = (options.to - options.from) / loops;
+        return $(this).each(function () {
+            var _this = this,
+                    loopCount = 0,
+                    value = options.from,
+                    interval = setInterval(updateTimer, options.refreshInterval);
+            function updateTimer() {
+                value += increment;
+                loopCount++;
+                $(_this).html(value.toFixed(options.decimals));
+                if (typeof (options.onUpdate) === 'function') {
+                    options.onUpdate.call(_this, value);
+                }
 
-// check if browser support HTML5 local storage
-function localStorageSupport() {
-    return (('localStorage' in window) && window['localStorage'] !== null)
-}
+                if (loopCount >= loops) {
+                    clearInterval(interval);
+                    value = options.to;
+                    if (typeof (options.onComplete) === 'function') {
+                        options.onComplete.call(_this, value);
+                    }
+                }
+            }
+        });
+    };
+    $.fn.countTo.defaults = {
+        from: 0, // the number the element should start at
+        to: 100, // the number the element should end at
+        speed: 1000, // how long it should take to count between the target numbers
+        refreshInterval: 100, // how often the element should be updated
+        decimals: 0, // the number of decimal places to show
+        onUpdate: null, // callback method for every time the element is updated,
+        onComplete: null // callback method for when the element finishes updating
+    };
+})(jQuery);
+new WOW().init();
 
-function SmoothlyMenu() {
-    if (!$('body').hasClass('mini-navbar') || $('body').hasClass('body-small')) {
-        // Hide menu in order to smoothly turn on when maximize menu
-        $('#side-menu').hide();
-        // For smoothly turn on menu
-        setTimeout(
-            function () {
-                $('#side-menu').fadeIn(400);
-            }, 200);
-    } else if ($('body').hasClass('fixed-sidebar')) {
-        $('#side-menu').hide();
-        setTimeout(
-            function () {
-                $('#side-menu').fadeIn(400);
-            }, 100);
-    } else {
-        // Remove all inline style from jquery fadeIn function to reset menu state
-        $('#side-menu').removeAttr('style');
-    }
-}
