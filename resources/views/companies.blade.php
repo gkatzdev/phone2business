@@ -11,7 +11,7 @@
 	<p class="alert alert-danger hidden"></p>
 	<p class="alert alert-success hidden"></p>
 	<div class="cabecalho_tabela">
-		<span class="header-colaboradores">
+		<span class="header-colaboradores header-empresas">
 			Empresas
 
 			<a href="" data-name="" data-company-id="" data-toggle="modal" data-target="#modal-company-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>

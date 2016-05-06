@@ -150,6 +150,16 @@
         margin-left: 84px !important;
         width: 400px !important;
     }
+    .ico_delete {
+        cursor: pointer;
+        padding-left: 250px !important;
+    }
+    .ico_delete_empresa{
+        padding-left: 450px !important;
+    }
+    .ico_delete_employee{
+        margin-top: -12px !important;
+    }
 }
 @media(max-width:400px){
     .ico_mais {
@@ -166,9 +176,6 @@
     }
     .linha_Azul{
         margin-top: 60px !important;
-    }
-    .Filtrar{
-        right: 23px !important;
     }
     .Quadrado_azul_copy {
         margin-right: 24px !important;
@@ -196,6 +203,31 @@
     .alert{
         margin-left: 3px !important;
         width: 200px !important;
+    }
+    .employees-list {
+        margin-left: 8px;
+        margin-right: 11px;
+    }
+    .Filtrar {
+        top: 25px !important;
+        margin-right: 78px !important;
+    }
+    .header-colaboradores {
+         left: 80px !important;
+     }
+    .header-empresas {
+         left: 114px !important;
+     }
+    .ico_delete {
+        cursor: pointer;
+        padding-left: 65px !important;
+    }
+    .ico_delete_empresa{
+        padding-left: 280px !important;
+        margin-top: -60px !important;
+    }
+    .ico_delete_employee{
+        margin-top: -20px !important;
     }
 }
 .linha_Azul {
@@ -225,7 +257,7 @@
     right: 19px;
     height: 28px;
     z-index: 43;
-    top: 18px !important;
+    top: 18px;
 }
 .input_Filtrar {
     border-width: 1.5px;
@@ -387,13 +419,14 @@
     z-index: 19;
 }
 .ico_delete {
+    cursor: pointer;
     padding-left: 230px;
+}
+.ico_delete_empresa{
+    padding-left: 1008px;
 }
 .tbl-nome-empresa{
     padding-top: 24px !important;
-}
-.ico_delete_empresa{
-    padding-top: 18px !important;
 }
 .linha_cinza {
     background-color: rgb(247, 247, 247);

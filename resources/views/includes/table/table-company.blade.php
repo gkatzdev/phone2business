@@ -10,7 +10,6 @@
         <thead>
         <tr class="table-title">
             <th class="Nome">Nome</th>
-            <th class="text-center"></th>
         </tr>
         </thead>
         <tbody>
@@ -22,9 +21,6 @@
                            data-company-id="{!! $company->id !!}" data-name="{!! $company->name !!}" !!}>
                             {!! $company->name !!}
                         </a>
-                    </td>
-                    <td class="text-center">
-                        &nbsp;
                         <a class="btn label btn-prev btn-delete-company" data-token="{!! csrf_token() !!}" data-company-id="{!! $company->id !!}">
                             <img class="ico_delete ico_delete_empresa" src="/img/ico-del.png" alt="">
                         </a>

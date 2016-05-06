@@ -100,8 +100,8 @@
                     $('#modal-company-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
-                        location.reload(true);
                     }, 2000);
+                    location.reload(true);
                 },
                 error: function(){
                     $('.alert-error').text('Ocorreu um erro ao incluir a empresa');

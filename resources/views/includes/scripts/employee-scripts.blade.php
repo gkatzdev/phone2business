@@ -110,8 +110,8 @@
                     $('#modal-employee-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
-                        location.reload(true);
                     }, 2000);
+                    location.reload(true);
                 },
                 error: function(){
                     $('.alert-error').text('Ocorreu um erro ao incluir o colaborador');
@@ -189,6 +189,7 @@
                 $('.alert-success').removeClass('hidden');
                 $('#modal-employee-details').modal('hide');
                 setTimeout(function(){
+                    $('ico_delete').css('margin-top','0px')
                     $('.alert-success').addClass('hidden');
                     location.reload(true);
                 }, 2000);
