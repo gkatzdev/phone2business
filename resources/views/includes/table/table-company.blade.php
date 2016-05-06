@@ -21,7 +21,7 @@
                            data-company-id="{!! $company->id !!}" data-name="{!! $company->name !!}" !!}>
                             {!! $company->name !!}
                         </a>
-                        <a class="btn label btn-prev btn-delete-company" data-token="{!! csrf_token() !!}" data-company-id="{!! $company->id !!}">
+                        <a class="btn label btn-prev btn-delete-company pull-right" data-token="{!! csrf_token() !!}" data-company-id="{!! $company->id !!}">
                             <img class="ico_delete ico_delete_empresa" src="/img/ico-del.png" alt="">
                         </a>
                     </td>

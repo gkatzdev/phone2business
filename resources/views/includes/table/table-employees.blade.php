@@ -26,7 +26,7 @@
                     </td>
                     <td class="table-title tbl-nome-empresa">
                         {!! $employee->company_name !!}
-                        <a class="btn-delete-employee" data-token="{!! csrf_token() !!}" data-employee-id="{!! $employee->employee_id !!}"
+                        <a class="btn label btn-prev btn-delete-employee pull-right" data-token="{!! csrf_token() !!}" data-employee-id="{!! $employee->employee_id !!}"
                                                           data-company-id="{!! $employee->company_id !!}">
                             <img class="ico_delete ico_delete_employee" src="/img/ico-del.png" alt="">
                         </a>

@@ -152,13 +152,13 @@
     }
     .ico_delete {
         cursor: pointer;
-        padding-left: 250px !important;
+        /*padding-left: 250px !important;*/
     }
     .ico_delete_empresa{
-        padding-left: 450px !important;
+        /*padding-left: 450px !important;*/
     }
     .ico_delete_employee{
-        margin-top: -12px !important;
+       /* margin-top: -12px !important;*/
     }
 }
 @media(max-width:400px){
@@ -201,7 +201,7 @@
         height: 372px !important;
     }
     .alert{
-        margin-left: 3px !important;
+        margin-left: 78px !important;
         width: 200px !important;
     }
     .employees-list {
@@ -219,15 +219,14 @@
          left: 114px !important;
      }
     .ico_delete {
-        cursor: pointer;
-        padding-left: 65px !important;
+        /*padding-left: 65px !important;*/
     }
     .ico_delete_empresa{
-        padding-left: 280px !important;
-        margin-top: -60px !important;
+        /*padding-left: 280px !important;
+        margin-top: -60px !important;*/
     }
     .ico_delete_employee{
-        margin-top: -20px !important;
+        /*margin-top: -20px !important;*/
     }
 }
 .linha_Azul {
@@ -420,10 +419,16 @@
 }
 .ico_delete {
     cursor: pointer;
-    padding-left: 230px;
+    margin-top: 18px;
+    /*padding-left: 230px;*/
+}
+.ico_delete_employee {
+    cursor: pointer;
+    margin-top: 0px;
+    /*padding-left: 230px;*/
 }
 .ico_delete_empresa{
-    padding-left: 1008px;
+    /*padding-left: 1008px;*/
 }
 .tbl-nome-empresa{
     padding-top: 24px !important;

@@ -105,12 +105,12 @@
                 data: $("#frm-employee").serialize(),
                 dataType: 'JSON',
                 success: function() {
-                    $('.alert-success').text('Colaborador incluído com sucesso!');
+                    /*$('.alert-success').text('Colaborador incluído com sucesso!');
                     $('.alert-success').removeClass('hidden');
                     $('#modal-employee-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
-                    }, 2000);
+                    }, 2000);*/
                     location.reload(true);
                 },
                 error: function(){
