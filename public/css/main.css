@@ -118,6 +118,7 @@
     margin-top: 17px;
     z-index: 49;
     width: auto;
+    margin-bottom: 40px;
 }
 .cabecalho_tabela {
     z-index: 48;
@@ -160,8 +161,14 @@
     .ico_delete_employee{
        /* margin-top: -12px !important;*/
     }
+    .Nome{
+        width: 100px !important;
+    }
 }
 @media(max-width:400px){
+    .Nome{
+        width: 100px !important;
+    }
     .ico_mais {
         position: relative;
         margin-left: 6px;

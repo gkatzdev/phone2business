@@ -24,7 +24,7 @@
             success: function(data){
                 var data = data[0];
                 if(typeof data != 'undefined'){
-                    $('#company_id').val(data.id);
+                    $('#company_id').val(data.company_id);
                     $('#name').val(data.name);
                     return data[0];
                 } else {
