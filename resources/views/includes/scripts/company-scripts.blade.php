@@ -2,14 +2,14 @@
 /**
  * Created by Gabriela Katz
 
- * Date: 09/03/2016
+ * Date: 05/05/2016
  */
 ?>
 <script>
     var companyId = $('#company_id').val();
 
     function clearFields(){
-        $('#company_id').val('0');
+        $('#company_id').val('');
         $('#name').val('');
     }
 
@@ -68,7 +68,7 @@
         var compId = button.data('company-id');
         var name = button.data('name');
 
-        if(compId == 0){
+        if(compId == ''){
             $('#company_id').val('');
             $("#btn-update-company").addClass('hidden');
             $("#btn-insert-company").removeClass('hidden');
@@ -100,9 +100,8 @@
                     $('#modal-company-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
+                        location.reload(true);
                     }, 2000);
-
-                    location.reload(true);
                 },
                 error: function(){
                     $('.alert-error').text('Ocorreu um erro ao incluir a empresa');
@@ -138,9 +137,8 @@
                     $('#modal-company-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
+                        location.reload(true);
                     }, 2000);
-
-                    location.reload(true);
                 },
                 error: function(){
                     $('.alert-error').text('Ocorreu um erro ao atualizar a empresa');
@@ -182,9 +180,8 @@
                 $('#modal-company-details').modal('hide');
                 setTimeout(function(){
                     $('.alert-success').addClass('hidden');
+                    location.reload(true);
                 }, 2000);
-
-                location.reload(true);
             },
             error: function(){
                 $('.alert-error').text('Ocorreu um erro ao excluir a empresa');

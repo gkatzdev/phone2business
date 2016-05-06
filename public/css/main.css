@@ -146,6 +146,10 @@
     .modal-body {
         margin-bottom: 60px !important;
     }
+    .alert{
+        margin-left: 84px !important;
+        width: 400px !important;
+    }
 }
 @media(max-width:400px){
     .ico_mais {
@@ -188,6 +192,10 @@
     }
     .modal-content {
         height: 372px !important;
+    }
+    .alert{
+        margin-left: 3px !important;
+        width: 200px !important;
     }
 }
 .linha_Azul {
@@ -699,4 +707,9 @@ body{
     background-image: none !important;
     outline: 0 !important;
     box-shadow: none !important;
+}
+.alert{
+    width: 500px;
+    text-align: center;
+    margin-left: 300px;
 }

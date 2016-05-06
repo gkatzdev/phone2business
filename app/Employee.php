@@ -46,12 +46,14 @@ class Employee extends Model
 
     public function updateEmployee($params, $employeeId){
         $employee = $this->find($employeeId);
+        $companyId = $params['company_id'];
 
-        $companyData = [
+        $data = [
+            'company_id' => $companyId,
             'name' => $params['name']
         ];
 
-        $employee->update($employeeId);
+        $employee->update($data);
         $employee = (object)$employee;
 
         return $employee;

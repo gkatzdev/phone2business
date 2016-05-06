@@ -30,7 +30,7 @@
                         &nbsp;
                         <a class="btn label btn-prev btn-delete-employee" data-token="{!! csrf_token() !!}" data-employee-id="{!! $employee->employee_id !!}"
                            data-company-id="{!! $employee->company_id !!}">
-                            <img class="ico_delete" src="/img/ico-del.png" alt="">
+                            <img class="ico_delete ico_delete_empresa" src="/img/ico-del.png" alt="">
                         </a>
                     </td>
                 </tr>

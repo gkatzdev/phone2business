@@ -30,7 +30,7 @@
                                 <span for="bank_id" class="table-title">Empresa:</span>
                             </div>
                             <div class="form-group col-sm-6">
-                                <select name="company_id" id="bank_id" class="form-control autocomplete">
+                                <select name="company_id" id="company_id" class="form-control autocomplete">
                                     <option value=""> Selecionar</option>
                                     @foreach($companies as $companyKey => $company)
                                         <option value='{!! $company->id !!}'>

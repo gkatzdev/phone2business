@@ -2,14 +2,14 @@
 /**
  * Created by Gabriela Katz
 
- * Date: 09/03/2016
+ * Date: 05/05/2016
  */
 ?>
 <script>
     var employeeId = $('#employee_id').val();
 
     function clearFields(){
-        $('#employee_id').val('0');
+        $('#employee_id').val('');
         $('#company_id').val('');
         $('#name').val('');
     }
@@ -77,7 +77,7 @@
         var name = button.data('name');
         var compId = button.data('company-id');
 
-        if(empId == 0){
+        if(empId == ''){
             $('#company_id').val('');
             $("#btn-update-employee").addClass('hidden');
             $("#btn-insert-employee").removeClass('hidden');
@@ -110,9 +110,8 @@
                     $('#modal-employee-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
+                        location.reload(true);
                     }, 2000);
-
-                    location.reload(true);
                 },
                 error: function(){
                     $('.alert-error').text('Ocorreu um erro ao incluir o colaborador');
@@ -148,9 +147,8 @@
                     $('#modal-employee-details').modal('hide');
                     setTimeout(function(){
                         $('.alert-success').addClass('hidden');
+                        location.reload(true);
                     }, 2000);
-
-                    location.reload(true);
                 },
                 error: function(){
                     $('.alert-error').text('Ocorreu um erro ao atualizar o colaborador');
@@ -192,9 +190,8 @@
                 $('#modal-employee-details').modal('hide');
                 setTimeout(function(){
                     $('.alert-success').addClass('hidden');
+                    location.reload(true);
                 }, 2000);
-
-                location.reload(true);
             },
             error: function(){
                 $('.alert-error').text('Ocorreu um erro ao excluir o colaborador');

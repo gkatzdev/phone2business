@@ -3,6 +3,7 @@
  * Date: 05/05/2016
  */
 jQuery(document).ready(function ($) {
+
     oTable = $('.table').DataTable({
         dom: 'tipr',
         language:{
@@ -10,7 +11,7 @@ jQuery(document).ready(function ($) {
         }
     });
     $('.input_Filtrar').keyup(function(){
-        oTable.search($(this).val()).draw() ;
+        oTable.search($(this).val()).draw();
     })
 });
 
