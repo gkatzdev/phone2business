@@ -23,6 +23,7 @@ Route::group(['middleware' => ['web']], function () {
         //Companies
         Route::group(['prefix' => 'company'], function() {
             Route::get('', ['as' => 'company', 'uses' => 'CompanyController@index']);
+            Route::get('{company_id}', ['as' => 'get.company', 'uses' => 'CompanyController@getCompany']);
             Route::post('', ['as' => 'post.company', 'uses' => 'CompanyController@insertCompany']);
             Route::put('', ['as' => 'update.company', 'uses' => 'CompanyController@updateCompany']);
             Route::delete('', ['as' => 'delete.company', 'uses' => 'CompanyController@deleteCompany']);

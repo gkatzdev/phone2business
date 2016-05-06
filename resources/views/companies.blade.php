@@ -6,13 +6,13 @@
 ?>
 @extends('layouts.default')
 
-@include('includes.modal.modal-employee-details')
+@include('includes.modal.modal-company-details')
 @section('content')
 	<div class="cabecalho_tabela">
 		<span class="header-colaboradores">
-			Colaboradores
+			Empresas
 
-			<a href="" data-toggle="modal" data-target="#modal-employee-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>
+			<a href="" data-toggle="modal" data-target="#modal-company-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>
 		</span>
 		<span class="Filtrar pull-right">
 			<input type="text" placeholder="Filtrar" class="input_Filtrar" />
@@ -21,9 +21,9 @@
 	</div>
 
 	<div class="col-sm-12 col-xs-12 table-responsive">
-		@include('includes.table.table-employees', $data)
+		@include('includes.table.table-company', $data)
 	</div>
 	@push('scripts')
-		@include('includes.scripts.employee-scripts')
+		@include('includes.scripts.company-scripts')
 	@endpush
 @stop

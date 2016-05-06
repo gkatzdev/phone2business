@@ -28,8 +28,13 @@ class CompanyController extends Controller
        $companies = new Company();
 
        $data = $companies->listCompanies();
-       return view('compnies')->with($data);
+       return view('companies')->with(['data' => $data]);
    }
+
+    public function getCompany(Company $company, $companyId){
+        $companies = $company->getEmployee($companyId);
+        return $companies;
+    }
 
     public function insertCompany(Request $request){
         $data = [

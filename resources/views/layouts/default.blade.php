@@ -7,10 +7,9 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-    @include('includes.employee.head')
+    @include('includes.head')
 </head>
 <body class="Listagem">
-<!-- Header-->
 <header class="col-sm-12 col-xs-12 Topo_logo">
     <div class="col-sm-12 col-xs-12 barra_azul_topo_1">
         <img class="logo_phone2b" src="/img/logo.png" alt="">
@@ -34,11 +33,9 @@
         </div>
     </div>
 </div>
-<!-- Index -->
 <div class="container-fluid employees-list">
     @yield('content')
 </div>
 <section>
-    {{--@include('includes.user.modal.modal-wish-services')--}}
 </section>
-@include('includes.employee.footer')
+@include('includes.footer')

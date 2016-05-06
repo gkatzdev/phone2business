@@ -52,9 +52,6 @@
 
     $("#frm-employee").validate({
         rules: {
-            employee_id: {
-                required: true
-            },
             company_id: {
                 required: true
             },
@@ -63,9 +60,6 @@
             }
         },
         messages: {
-            employee_id: {
-                required: "Campo obrigatório"
-            },
             company_id: {
                 required: "Campo obrigatório"
             },

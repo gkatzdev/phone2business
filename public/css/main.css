@@ -507,28 +507,28 @@ body{
 .Salvar {
     font-size: 13px;
     font-family: "Myriad Pro";
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     line-height: 1.50;
     z-index: 91;
 }
 .Salvar:hover {
     font-size: 13px;
     font-family: "Myriad Pro";
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     line-height: 1.50;
     z-index: 91;
 }
 .Cancelar {
     font-size: 13px;
     font-family: "Myriad Pro";
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     line-height: 1.50;
     z-index: 90;
 }
 .Cancelar:hover {
     font-size: 13px;
     font-family: "Myriad Pro";
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255) !important;
     line-height: 1.50;
     z-index: 90;
 }
@@ -681,4 +681,8 @@ body{
     width: 1050px;
     height: 529px;
     z-index: 71;
+}
+.error{
+    font-size: 8pt;
+    color: red;
 }
