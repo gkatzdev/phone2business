@@ -13,4 +13,3 @@
 {!! Html::style('/css/font-awesome.min.css') !!}
 {!! Html::style('/css/bootstrap.css') !!}
 {!! Html::style('/css/main.css') !!}
-{!! Html::script('/js/vendor/modernizr.js') !!}
