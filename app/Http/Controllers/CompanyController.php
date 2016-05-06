@@ -32,7 +32,7 @@ class CompanyController extends Controller
    }
 
     public function getCompany(Company $company, $companyId){
-        $companies = $company->getEmployee($companyId);
+        $companies = $company->getCompany($companyId);
         return $companies;
     }
 

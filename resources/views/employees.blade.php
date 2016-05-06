@@ -12,7 +12,7 @@
 		<span class="header-colaboradores">
 			Colaboradores
 
-			<a href="" data-toggle="modal" data-target="#modal-employee-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>
+			<a href="" data-employee-id="0" data-name="" data-company-id="0" data-toggle="modal" data-target="#modal-employee-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>
 		</span>
 		<span class="Filtrar pull-right">
 			<input type="text" placeholder="Filtrar" class="input_Filtrar" />

@@ -12,7 +12,7 @@
 		<span class="header-colaboradores">
 			Empresas
 
-			<a href="" data-toggle="modal" data-target="#modal-company-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>
+			<a href="" data-name="" data-company-id="0" data-toggle="modal" data-target="#modal-company-details"><img class="ico_mais" src="/img/ico-add.png" alt=""></a>
 		</span>
 		<span class="Filtrar pull-right">
 			<input type="text" placeholder="Filtrar" class="input_Filtrar" />

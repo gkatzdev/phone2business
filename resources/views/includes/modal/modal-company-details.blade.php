@@ -12,7 +12,7 @@
                 <button type="button" class="close ico_close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 Edição de Empresas
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-body-company">
                 {!! Form::open(array('name' => 'frm-company', 'id' => 'frm-company', 'url' => route('post.company'), 'method' => 'POST')) !!}
                 {!! Form::hidden('company_id', '', ['id' => 'company_id']) !!}
                 <div class="row col-md-12">

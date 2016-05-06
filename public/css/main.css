@@ -270,11 +270,13 @@
     padding-left: 12px !important;
 }
 .Nomes {
-    font-size: 11.53px;
-    font-family: "Myriad Pro";
-    color: rgb(0, 129, 192);
-    line-height: 3.52;
-    z-index: 33;
+    font-size: 14.53px !important;
+    font-family: "Myriad Pro" !important;
+    color: rgb(0, 129, 192) !important;
+    line-height: 3.52 !important;
+    z-index: 33 !important;
+    cursor: pointer;
+    padding-left: 4px;
 }
 .Operadora {
     position: absolute;
@@ -377,13 +379,14 @@
     z-index: 19;
 }
 .ico_delete {
-    background-color: rgb(202, 22, 46);
-    position: absolute;
-    left: 913px;
-    top: 347px;
-    width: 16px;
-    height: 15px;
-    z-index: 18;
+    padding-left: 230px;
+    #padding-top: 18px;
+}
+.tbl-nome-empresa{
+    padding-top: 24px !important;
+}
+.ico_delete_empresa{
+    padding-top: 18px !important;
 }
 .linha_cinza {
     background-color: rgb(247, 247, 247);
@@ -571,6 +574,13 @@ body{
     margin-right: 137px;
     z-index: 84;
 }
+.modal-body-company {
+    margin-top: 95px;
+    margin-bottom: 100px;
+    margin-left: 98px;
+    margin-right: 137px;
+    z-index: 84;
+}
 .form-control {
     width: 250px;
 }
@@ -685,4 +695,9 @@ body{
 .error{
     font-size: 8pt;
     color: red;
+}
+.btn:active, .btn.active {
+    background-image: none !important;
+    outline: 0 !important;
+    box-shadow: none !important;
 }

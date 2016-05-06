@@ -18,20 +18,19 @@
         @if(count($data))
             @foreach($data as $employeeKey => $employee)
                 <tr>
-                    <td class="Nomes">
-                        <a class="label btn btn-next" data-toggle="modal" data-target="#modal-employee-details"
-                           data-employee-id="{!! $employee->id !!}" data-name="{!! $employee->name !!}"
+                    <td>
+                        <a class="Nomes" data-toggle="modal" data-target="#modal-employee-details"
+                           data-employee-id="{!! $employee->employee_id !!}" data-name="{!! $employee->employee_name !!}"
                            data-company-id="{!! $employee->company_id !!}">
-                            {!! $employee->name !!}
+                            {!! $employee->employee_name !!}
                         </a>
                     </td>
-                    <td class="table-title">{!! $employee->company_name !!}</td>
+                    <td class="table-title tbl-nome-empresa">{!! $employee->company_name !!}</td>
                     <td class="text-center">
                         &nbsp;
-                        <a class="btn label btn-prev btn-delete-employee" data-token="{!! csrf_token() !!}" data-employee-id="{!! $employee->id !!}"
+                        <a class="btn label btn-prev btn-delete-employee" data-token="{!! csrf_token() !!}" data-employee-id="{!! $employee->employee_id !!}"
                            data-company-id="{!! $employee->company_id !!}">
-                            <i class="fa fa-eraser"></i>
-                            Excluir
+                            <img class="ico_delete" src="/img/ico-del.png" alt="">
                         </a>
                     </td>
                 </tr>

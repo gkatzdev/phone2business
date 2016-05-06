@@ -23,7 +23,7 @@ class CustomModel extends Model
     {
         $employee = DB::table('employee')
             ->join('company', 'company.id', '=', 'employee.company_id')
-            ->select('company.name as company_name', 'company.id as company_id')
+            ->select('employee.id as employee_id', 'employee.name as employee_name', 'company.id as company_id', 'company.name as company_name')
             ->get();
         return $employee;
     }
