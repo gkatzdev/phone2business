@@ -136,10 +136,16 @@
     z-index: 47;
 }
 .ico_mais {
+    cursor: pointer;
     position: relative;
     margin-left: 19px;
     margin-top: -2px;
     z-index: 46;
+}
+@media(max-width:991px) {
+    .modal-body {
+        margin-bottom: 60px !important;
+    }
 }
 @media(max-width:400px){
     .ico_mais {
@@ -159,6 +165,29 @@
     }
     .Filtrar{
         right: 23px !important;
+    }
+    .Quadrado_azul_copy {
+        margin-right: 24px !important;
+    }
+    .Quadrado_cinza_copy {
+        margin-left: 34px !important;
+    }
+    .modal-body {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        margin-left: 35px !important;
+        margin-right: 137px !important;
+        z-index: 84;
+    }
+    .modal-label {
+        padding-top: 0px !important;
+        margin-right: 0px !important;
+    }
+    .modal-name {
+        padding-left: 0px !important;
+    }
+    .modal-content {
+        height: 372px !important;
     }
 }
 .linha_Azul {
@@ -347,7 +376,7 @@
     height: 529px;
     z-index: 19;
 }
-.ico_close {
+.ico_delete {
     background-color: rgb(202, 22, 46);
     position: absolute;
     left: 913px;
@@ -456,4 +485,200 @@ body{
     left: 19px;
     top: 20px;
     z-index: 47;
+}
+
+
+.Formulario_modal {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1050px;
+    height: 529px;
+    z-index: 93;
+}
+.Botões {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1050px;
+    height: 529px;
+    z-index: 92;
+}
+.Salvar {
+    font-size: 13px;
+    font-family: "Myriad Pro";
+    color: rgb(255, 255, 255);
+    line-height: 1.50;
+    z-index: 91;
+}
+.Salvar:hover {
+    font-size: 13px;
+    font-family: "Myriad Pro";
+    color: rgb(255, 255, 255);
+    line-height: 1.50;
+    z-index: 91;
+}
+.Cancelar {
+    font-size: 13px;
+    font-family: "Myriad Pro";
+    color: rgb(255, 255, 255);
+    line-height: 1.50;
+    z-index: 90;
+}
+.Cancelar:hover {
+    font-size: 13px;
+    font-family: "Myriad Pro";
+    color: rgb(255, 255, 255);
+    line-height: 1.50;
+    z-index: 90;
+}
+.Quadrado_azul_copy {
+    border-radius: 3px;
+    background-color: rgb(0, 129, 192);
+    margin-left: 48px;
+    width: 82px;
+    height: 35px;
+    z-index: 89;
+}
+.Quadrado_azul {
+    border-radius: 3px;
+    background-color: rgb(0, 97, 159);
+    width: 82px;
+    height: 35px;
+    margin-top: -2px;
+    z-index: 88;
+}
+.Quadrado_cinza_copy {
+    border-radius: 3px;
+    background-color: rgb(163, 182, 191);
+    width: 98px;
+    margin-left: 360px;
+    height: 35px;
+    z-index: 87;
+}
+.Quadrado_cinza {
+    border-radius: 3px;
+    background-color: rgb(127, 141, 147);
+    margin-top: -2px;
+    width: 98px;
+    height: 35px;
+    z-index: 86;
+}
+.modal-body {
+    margin-top: 95px;
+    margin-bottom: 148px;
+    margin-left: 98px;
+    margin-right: 137px;
+    z-index: 84;
+}
+.form-control {
+    width: 250px;
+}
+.modal-footer .btn + .btn {
+    margin-bottom: 0;
+    margin-left: 0px;
+}
+.modal-name{
+    padding-left: 31px;
+}
+.modal-label{
+    padding-top: 5px;
+    margin-right: 3px;
+}
+.arrow {
+    background-image: url("/img/arrow.png");
+    position: absolute;
+    left: 641px;
+    top: 256px;
+    width: 29px;
+    height: 38px;
+    z-index: 83;
+}
+.input_empresa {
+    border-width: 2px;
+    border-color: rgb(226, 226, 226);
+    border-style: solid;
+    border-radius: 3px;
+    position: absolute;
+    left: 406px;
+    top: 259px;
+    width: 260px;
+    height: 30px;
+    z-index: 82;
+}
+.input_nome {
+    border-width: 2px;
+    border-color: rgb(226, 226, 226);
+    border-style: solid;
+    border-radius: 3px;
+    position: absolute;
+    left: 406px;
+    top: 215px;
+    width: 260px;
+    height: 30px;
+    z-index: 81;
+}
+.modal-cabecalho {
+    top: 120px;
+    overflow: hidden;
+}
+.modal-header {
+    font-size: 14.73px;
+    font-family: "Myriad Pro";
+    color: rgb(232, 232, 232);
+    line-height: 1.50;
+    border-radius: 2px;
+    background-color: rgb(37, 63, 80);
+    height: 54px;
+    z-index: 75;
+}
+.ico_close {
+    color: rgb(73, 102, 120);
+    width: 14px;
+    height: 14px;
+    z-index: 76;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: none;
+    filter: none;
+    opacity: 1;
+}
+.Cabeçalho {
+    border-radius: 2px;
+    background-color: rgb(37, 63, 80);
+    position: absolute;
+    width: 567px;
+    height: 54px;
+    z-index: 75;
+}
+.Linha_cinza {
+    background-color: rgb(226, 226, 226);
+    position: absolute;
+    left: 244px;
+    top: 395px;
+    width: 565px;
+    height: 2px;
+    z-index: 74;
+}
+.Fundo_Branco {
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.48);
+    position: absolute;
+    left: 242px;
+    top: 120px;
+    width: 566px;
+    height: 342px;
+    z-index: 73;
+}
+.Layer_3 {
+    background-image: url("/img/Layer 3.png");
+    opacity: 0.851;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1050px;
+    height: 529px;
+    z-index: 71;
 }
