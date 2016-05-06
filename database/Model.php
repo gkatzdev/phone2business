@@ -21,9 +21,11 @@ class CustomModel extends Model
     /** Get all users **/
     protected function getEmployees()
     {
-        $user = DB::table('users')
+        $employee = DB::table('employee')
+            ->join('company', 'company.id', '=', 'employee.company_id')
+            ->select('company.name as company_name', 'company.id as company_id')
             ->get();
-        return $user;
+        return $employee;
     }
 
     /** Get all companies **/

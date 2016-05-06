@@ -10,14 +10,7 @@
 <meta name="description" content="Phone2B, Phone2Business">
 <meta name="author" content="Gabriela&nbsp;Katz&nbsp;Bonello">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-{!! Html::style('/user/css/theme-style.css') !!}
-{!! Html::style('/user/css/ie.style.css') !!}
-{!! Html::style('/user/css/sweetalert.css') !!}
-{!! Html::style('/user/css/bootstrap-datepicker.min.css') !!}
-{!! Html::script('http://html5shim.googlecode.com/svn/trunk/html5.js') !!}
-{!! Html::script('http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js') !!}
-{!! Html::style('/user/css/font-awesome-ie7.css') !!}
-{!! Html::style('/user/css/font-awesome.min.css') !!}
-{!! Html::script('/user/js/vendor/modernizr.js') !!}
-{!! Html::script('/user/js/vendor/less-1.3.3.js') !!}
-{!! Html::script('/user/js/vendor/less.js') !!}
+{!! Html::style('/css/font-awesome.min.css') !!}
+{!! Html::style('/css/bootstrap.css') !!}
+{!! Html::style('/css/main.css') !!}
+{!! Html::script('/js/vendor/modernizr.js') !!}

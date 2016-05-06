@@ -4,4 +4,4 @@
  * Date: 05/05/2016
  */
 ?>
-@include('includes.user.scripts.package')
+@include('includes.employee.scripts.package')
