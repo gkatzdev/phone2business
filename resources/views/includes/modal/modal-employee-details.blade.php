@@ -51,7 +51,7 @@
                         <button id="btn-update-employee" class="btn Quadrado_azul Salvar">Salvar</button>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 col-xs-3">
                     <div class="Quadrado_cinza_copy">
                         <button id="button" class="btn Quadrado_cinza Cancelar" data-dismiss="modal">Cancelar</button>
                     </div>

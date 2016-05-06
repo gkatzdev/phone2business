@@ -205,7 +205,10 @@
         padding-left: 0px !important;
     }
     .modal-content {
-        height: 372px !important;
+        height: 410px !important;
+    }
+    .modal-content-company {
+        height: 300px !important;
     }
     .alert{
         margin-left: 78px !important;

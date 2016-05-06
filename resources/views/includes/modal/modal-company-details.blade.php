@@ -7,7 +7,7 @@
 ?>
 <div id="modal-company-details" class="modal modal-cabecalho fade" tabindex="990" role="dialog" aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content modal-content-company">
             <div class="modal-header">
                 <button type="button" class="close ico_close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 Edição de Empresas
@@ -36,7 +36,7 @@
                         <button id="btn-update-company" class="btn Quadrado_azul Salvar">Salvar</button>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 col-xs-3">
                     <div class="Quadrado_cinza_copy">
                         <button id="button" class="btn Quadrado_cinza Cancelar" data-dismiss="modal">Cancelar</button>
                     </div>
