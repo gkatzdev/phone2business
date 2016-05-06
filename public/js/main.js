@@ -5,13 +5,14 @@
 jQuery(document).ready(function ($) {
 
     oTable = $('.table').DataTable({
-        dom: 'tipr',
+        dom: 'tpr',
         language:{
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese.json"
         }
     });
+
     $('.input_Filtrar').keyup(function(){
         oTable.search($(this).val()).draw();
-    })
+    });
 });
 
