@@ -5,15 +5,16 @@
 
  */
 ?>
-<table id="accounts-table" class="table table-hover">
-    <thead>
-    <tr>
-        <th>Nome</th>
-        <th>Empresa</th>
-        <th class="text-center"></th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="employees-table">
+    <table id="employees-table" class="table table-hover">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Empresa</th>
+            <th class="text-center"></th>
+        </tr>
+        </thead>
+        <tbody>
         @if(count($data))
             @foreach($data as $employeeKey => $employee)
                 <tr>
@@ -40,5 +41,6 @@
                 <td colspan="6" class="text-center">Nenhum colaborador cadastrado</td>
             </tr>
         @endif
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

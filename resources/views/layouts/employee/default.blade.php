@@ -9,7 +9,7 @@
 <head>
     @include('includes.employee.head')
 </head>
-<body>
+<body class="Listagem">
 <!-- Header-->
 <header class="col-sm-12 col-xs-12 Topo_logo">
     <div class="col-sm-12 col-xs-12 barra_azul_topo_1">
@@ -35,7 +35,7 @@
     </div>
 </div>
 <!-- Index -->
-<div class="listagem">
+<div class="container-fluid employees-list">
     @yield('content')
 </div>
 <section>
